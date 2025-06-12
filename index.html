@@ -287,19 +287,26 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
+    cursor: pointer;
 }
 
 .logo {
     width: 50vw;
     height: auto;
     margin-top: 10vw;
-    #opacity: 0.8;
-    #transition: opacity 0.3s ease;
-    #filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
 }
 
 .logo:hover {
     opacity: 1;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.logo:active {
+    transform: scale(0.95);
 }
 
 @media (max-width: 768px) {
@@ -366,7 +373,7 @@ body {
 <div class="berry"></div>
 </div>
 
-<div class="logo-container">
+<div class="logo-container" id="logoContainer">
 <img src="logo.png" alt="Logo" class="logo">
 </div>
 </div>
@@ -466,15 +473,15 @@ window.addEventListener('load', function() {
     setTimeout(displayMessage, 1000);
 });
 
-// Opzionale: cambia messaggio cliccando sulla pozza
+// Cambia messaggio cliccando sul logo
 document.addEventListener('DOMContentLoaded', function() {
-    const poolInner = document.querySelector('.pool-inner');
-    if (poolInner) {
-        poolInner.addEventListener('click', function() {
+    const logoContainer = document.getElementById('logoContainer');
+    if (logoContainer) {
+        logoContainer.addEventListener('click', function() {
             displayMessage();
         });
     }
 });
 </script>
-</body>
 </html>
+</body>
